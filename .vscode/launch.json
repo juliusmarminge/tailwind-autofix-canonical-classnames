@@ -1,0 +1,45 @@
+{
+  "version": "0.2.0",
+  // List of configurations. Add new configurations or edit existing ones.
+  "configurations": [
+    {
+      "type": "extensionHost",
+      "request": "launch",
+      "name": "Launch Client",
+      "runtimeExecutable": "${execPath}",
+      "args": [
+        // enable this flag if you want to activate the extension only when you are debugging the extension
+        // "--disable-extensions",
+        "--disable-updates",
+        "--disable-workspace-trust",
+        "--skip-release-notes",
+        "--skip-welcome",
+        "--extensionDevelopmentPath=${workspaceRoot}/packages/vscode-tailwindcss"
+      ],
+      "stopOnEntry": false,
+      "sourceMaps": true,
+      "outFiles": ["${workspaceRoot}/packages/vscode-tailwindcss/dist/**/*.js"],
+      "preLaunchTask": "npm: dev"
+    },
+    {
+      "type": "node",
+      "request": "attach",
+      "name": "Attach to Server 6011",
+      "address": "localhost",
+      "protocol": "inspector",
+      "port": 6011,
+      "sourceMaps": true,
+      "outFiles": ["${workspaceRoot}/packages/vscode-tailwindcss/dist/**/*.js"]
+    },
+    {
+      "type": "node",
+      "request": "attach",
+      "name": "Attach to Server 6012",
+      "address": "localhost",
+      "protocol": "inspector",
+      "port": 6012,
+      "sourceMaps": true,
+      "outFiles": ["${workspaceRoot}/packages/vscode-tailwindcss/dist/**/*.js"]
+    }
+  ]
+}
