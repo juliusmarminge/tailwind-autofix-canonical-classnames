@@ -26,4 +26,20 @@ await Bun.$`bunx ovsx publish -p "${process.env.OPEN_VSX_TOKEN}" --skip-duplicat
 // Commit the version bump
 await Bun.$`git add package.json`;
 await Bun.$`git commit -m "chore: bump version [skip ci]"`;
+
+// Tag the release
+const tag = `v${next}`;
+let tagExists = false;
+try {
+  await Bun.$`git rev-parse ${tag}`;
+  tagExists = true;
+} catch {
+  tagExists = false;
+}
+
+if (!tagExists) {
+  await Bun.$`git tag ${tag}`;
+}
+
 await Bun.$`git push`;
+await Bun.$`git push origin ${tag}`;
