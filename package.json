@@ -1,7 +1,7 @@
 {
   "name": "tailwind-autofix-canonical-classnames",
   "displayName": "Tailwind Canonical Classes Autofix",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Auto-fix Tailwind CSS canonical class suggestions on save, as suggested by https://github.com/tailwindlabs/tailwindcss/discussions/19323.",
   "categories": [
     "Other"
