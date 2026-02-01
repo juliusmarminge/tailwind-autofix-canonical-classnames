@@ -4,9 +4,11 @@
 node_modules/**
 coverage/**
 *.log
-pnpm-lock.yaml
 test/**
+src/**
 .gitignore
 .oxfmtrc.json
 .oxlintrc.json
 .vscodeignore
+tsconfig.json
+bun.lock

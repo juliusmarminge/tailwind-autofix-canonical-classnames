@@ -1,10 +1,16 @@
-const vscode = require("vscode");
-const { getCanonicalFixes } = require("./src/canonical");
+import * as vscode from "vscode";
 
-const FIX_ALL_KIND = new vscode.CodeActionKind("source.fixAll.tailwindCanonicalClasses");
+import { getCanonicalFixes } from "./canonical";
 
-class TailwindCanonicalClassesFixAllProvider {
-  provideCodeActions(document) {
+const FIX_ALL_KIND = vscode.CodeActionKind.SourceFixAll.append("tailwindCanonicalClasses");
+
+class TailwindCanonicalClassesFixAllProvider implements vscode.CodeActionProvider {
+  provideCodeActions(
+    document: vscode.TextDocument,
+    _range: vscode.Range,
+    _context: vscode.CodeActionContext,
+    _token: vscode.CancellationToken,
+  ): vscode.CodeAction[] {
     const diagnostics = vscode.languages.getDiagnostics(document.uri);
     const fixes = getCanonicalFixes(diagnostics);
     if (fixes.length === 0) return [];
@@ -20,13 +26,13 @@ class TailwindCanonicalClassesFixAllProvider {
   }
 }
 
-function shouldFixOnSave() {
+function shouldFixOnSave(): boolean {
   const config = vscode.workspace.getConfiguration("tailwindCanonicalClasses");
   return config.get("fixOnSave", true);
 }
 
-function activate(context) {
-  const documentSelector = [{ scheme: "file" }, { scheme: "untitled" }];
+export function activate(context: vscode.ExtensionContext): void {
+  const documentSelector: vscode.DocumentSelector = [{ scheme: "file" }, { scheme: "untitled" }];
 
   context.subscriptions.push(
     vscode.languages.registerCodeActionsProvider(
@@ -39,7 +45,7 @@ function activate(context) {
   );
 
   context.subscriptions.push(
-    vscode.workspace.onWillSaveTextDocument((event) => {
+    vscode.workspace.onWillSaveTextDocument((event: vscode.TextDocumentWillSaveEvent) => {
       if (!shouldFixOnSave()) return;
 
       const diagnostics = vscode.languages.getDiagnostics(event.document.uri);
@@ -53,9 +59,4 @@ function activate(context) {
   );
 }
 
-function deactivate() {}
-
-module.exports = {
-  activate,
-  deactivate,
-};
+export function deactivate(): void {}
