@@ -2,7 +2,6 @@
 .github/**
 .repos/**
 node_modules/**
-coverage/**
 *.log
 test/**
 src/**
@@ -10,5 +9,6 @@ src/**
 .oxfmtrc.json
 .oxlintrc.json
 .vscodeignore
+.vscode/**
 tsconfig.json
 bun.lock
