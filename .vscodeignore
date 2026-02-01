@@ -1,0 +1,12 @@
+.git/**
+.github/**
+.repos/**
+node_modules/**
+coverage/**
+*.log
+pnpm-lock.yaml
+test/**
+.gitignore
+.oxfmtrc.json
+.oxlintrc.json
+.vscodeignore

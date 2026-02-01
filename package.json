@@ -1,0 +1,44 @@
+{
+  "name": "tailwind-autofix-canonical-classnames",
+  "displayName": "Tailwind Canonical Classes Autofix",
+  "version": "0.0.3",
+  "description": "Auto-fix Tailwind CSS canonical class suggestions on save, as suggested by https://github.com/tailwindlabs/tailwindcss/discussions/19323.",
+  "categories": [
+    "Other"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/juliusmarminge/tailwind-autofix-canonical-classnames"
+  },
+  "publisher": "juliusmarminge",
+  "main": "./extension.js",
+  "scripts": {
+    "lint": "oxlint && oxfmt",
+    "test": "node --test",
+    "publish:ovsx": "pnpm version patch --no-git-tag-version && pnpm dlx ovsx publish -p \"$OPEN_VSX_TOKEN\" --skip-duplicate"
+  },
+  "devDependencies": {
+    "oxfmt": "0.27.0",
+    "oxlint": "^1.42.0"
+  },
+  "contributes": {
+    "configuration": {
+      "title": "Tailwind Canonical Classes Autofix",
+      "properties": {
+        "tailwindCanonicalClasses.fixOnSave": {
+          "type": "boolean",
+          "default": true,
+          "description": "Apply canonical Tailwind class fixes on save."
+        }
+      }
+    }
+  },
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "packageManager": "pnpm@10.28.2"
+}
