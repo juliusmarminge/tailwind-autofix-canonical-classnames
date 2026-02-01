@@ -1,0 +1,22 @@
+{
+  "include": ["src", "../../types"],
+  "compilerOptions": {
+    "module": "ES2022",
+    "lib": ["ES2022"],
+    "target": "ES2022",
+    "importHelpers": true,
+    "declaration": true,
+    "sourceMap": true,
+    "rootDir": "./src",
+    "strict": false,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "moduleResolution": "Bundler",
+    "skipLibCheck": true,
+    "jsx": "react",
+    "esModuleInterop": true,
+    "isolatedDeclarations": true
+  }
+}

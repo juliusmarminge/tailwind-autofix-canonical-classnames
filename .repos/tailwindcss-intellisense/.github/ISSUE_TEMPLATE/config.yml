@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Feature Request
+    url: https://github.com/tailwindlabs/tailwindcss/discussions/new?category=ideas&title=%5BIntelliSense%5D%20
+    about: 'Suggest any ideas you have using our discussion forums.'
